@@ -1,12 +1,81 @@
-<html>
-    <head></head>
+---
+const tituloPagina = "Sobre Mim";
+
+const identidade = {
+    nome: "Sarah",
+    pais: "Canadá",
+    ocupacao: "Escritora Técnica",
+    hobbies: ["fotografia", "observar pássaros", "beisebol"],
+};
+
+const habilidades = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Astro",
+    "Escrever Documentação",
+];
+
+const feliz = true;
+const terminado = false;
+const meta = 3;
+---
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{tituloPagina}</title>
+    </head>
     <body>
         <a href="/">Início</a>
         <a href="/sobre/">Sobre</a>
         <a href="/blog/">Blog</a>
+        <h1>{tituloPagina}</h1>
+        <h2>... e meu novo site Astro!</h2>
 
+        <p>
+            Estou resolvendo o tutorial introdutório do Astro. Esta é a segunda
+            página no meu website, e é a primeira que eu mesmo construí!
+        </p>
 
-        <h1>Hello world!</h1>
-        <p>Este é o meu primeiro site em Astro!</p>
+        <p>
+            Este site será atualizado enquanto eu completo mais desse tutorial,
+            então continue verificando e veja como minha jornada está indo!
+        </p>
+        <p>Aqui estão alguns fatos sobre mim:</p>
+        <ul>
+            <li>Meu nome é {identidade.nome}.</li>
+            <li>
+                Eu moro no {identidade.pais} e eu trabalho como uma {
+                    identidade.ocupacao
+                }.
+            </li>
+            {
+                identidade.hobbies.length >= 2 && (
+                    <li>
+                        Dois dos meus hobbies são: {identidade.hobbies[0]} and{" "}
+                        {identidade.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>Minhas habilidades são:</p>
+        <ul>
+            {habilidades.map((habilidade) => <li>{habilidade}</li>)}
+        </ul>
+
+        {feliz && <p>Estou feliz em estar aprendendo Astro!</p>}
+
+        {terminado && <p>Eu terminei esse tutorial!</p>}
+
+        {
+            meta === 3 ? (
+                <p>Minha meta é terminar em 3 dias.</p>
+            ) : (
+                <p>Minha meta não é em 3 dias.</p>
+            )
+        }
     </body>
 </html>
