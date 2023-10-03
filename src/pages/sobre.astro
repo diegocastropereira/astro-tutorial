@@ -1,6 +1,7 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 const tituloPagina = "Sobre Mim";
+import LayoutBase from "../layouts/LayoutBase.astro";
 
 const identidade = {
     nome: "Sarah",
@@ -32,70 +33,66 @@ const capitalizacaoTexto = "uppercase";
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>{tituloPagina}</title>
-        <style define:vars={{corHabilidade, espessuraFonte, capitalizacaoTexto}}>
-            h1 {
-              color: purple;
-              font-size: 4rem;
-            }
+        <style
+            define:vars={{ corHabilidade, espessuraFonte, capitalizacaoTexto }}
+        >
             .habilidade {
-              color: var(--corHabilidade);
-              font-weight: var(--espessuraFonte);
-              text-transform: var(--capitalizacaoTexto);
+                color: var(--corHabilidade);
+                font-weight: var(--espessuraFonte);
+                text-transform: var(--capitalizacaoTexto);
             }
-          </style>
+        </style>
     </head>
     <body>
-        <a href="/">Início</a>
-        <a href="/sobre/">Sobre</a>
-        <a href="/blog/">Blog</a>
-        <h1>{tituloPagina}</h1>
-        <h2>... e meu novo site Astro!</h2>
+        <LayoutBase tituloPagina={tituloPagina}>
+            <p>
+                Estou resolvendo o tutorial introdutório do Astro. Esta é a
+                segunda página no meu website, e é a primeira que eu mesmo
+                construí!
+            </p>
 
-        <p>
-            Estou resolvendo o tutorial introdutório do Astro. Esta é a segunda
-            página no meu website, e é a primeira que eu mesmo construí!
-        </p>
+            <p>
+                Este site será atualizado enquanto eu completo mais desse
+                tutorial, então continue verificando e veja como minha jornada
+                está indo!
+            </p>
+            <p>Aqui estão alguns fatos sobre mim:</p>
+            <ul>
+                <li>Meu nome é {identidade.nome}.</li>
+                <li>
+                    Eu moro no {identidade.pais} e eu trabalho como uma {
+                        identidade.ocupacao
+                    }.
+                </li>
+                {
+                    identidade.hobbies.length >= 2 && (
+                        <li>
+                            Dois dos meus hobbies são: {identidade.hobbies[0]}{" "}
+                            and {identidade.hobbies[1]}
+                        </li>
+                    )
+                }
+            </ul>
+            <p>Minhas habilidades são:</p>
+            <ul>
+                {
+                    habilidades.map((habilidade) => (
+                        <li class="habilidade">{habilidade}</li>
+                    ))
+                }
+            </ul>
 
-        <p>
-            Este site será atualizado enquanto eu completo mais desse tutorial,
-            então continue verificando e veja como minha jornada está indo!
-        </p>
-        <p>Aqui estão alguns fatos sobre mim:</p>
-        <ul>
-            <li>Meu nome é {identidade.nome}.</li>
-            <li>
-                Eu moro no {identidade.pais} e eu trabalho como uma {
-                    identidade.ocupacao
-                }.
-            </li>
+            {feliz && <p>Estou feliz em estar aprendendo Astro!</p>}
+
+            {terminado && <p>Eu terminei esse tutorial!</p>}
+
             {
-                identidade.hobbies.length >= 2 && (
-                    <li>
-                        Dois dos meus hobbies são: {identidade.hobbies[0]} and{" "}
-                        {identidade.hobbies[1]}
-                    </li>
+                meta === 3 ? (
+                    <p>Minha meta é terminar em 3 dias.</p>
+                ) : (
+                    <p>Minha meta não é em 3 dias.</p>
                 )
             }
-        </ul>
-        <p>Minhas habilidades são:</p>
-        <ul>
-            {
-                habilidades.map((habilidade) => (
-                    <li class="habilidade">{habilidade}</li>
-                ))
-            }
-        </ul>
-
-        {feliz && <p>Estou feliz em estar aprendendo Astro!</p>}
-
-        {terminado && <p>Eu terminei esse tutorial!</p>}
-
-        {
-            meta === 3 ? (
-                <p>Minha meta é terminar em 3 dias.</p>
-            ) : (
-                <p>Minha meta não é em 3 dias.</p>
-            )
-        }
+        </LayoutBase>
     </body>
 </html>

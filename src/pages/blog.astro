@@ -1,23 +1,25 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import LayoutBase from "../layouts/LayoutBase.astro";
+const tituloPagina = "Blog";
 ---
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
-  </head>
-  <body>
-    <a href="/">Início</a>
-    <a href="/sobre/">Sobre</a>
-    <a href="/blog/">Blog</a>
 
-    <h1>Meu Blog de Aprendizado sobre Astro</h1>
-    <p>Aqui é onde postarei sobre minha jornada aprendendo Astro.</p>
-    <ul>
-      <li><a href="/postagens/post-1/">Postagem 1</a></li>
-      <li><a href="/postagens/post-2/">Postagem 2</a></li>
-      <li><a href="/postagens/post-3/">Postagem 3</a></li>
-    </ul>
-  </body>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Astro</title>
+    </head>
+    <body>
+        <LayoutBase tituloPagina={tituloPagina}>
+
+            <h1>Meu Blog de Aprendizado sobre Astro</h1>
+            <p>Aqui é onde postarei sobre minha jornada aprendendo Astro.</p>
+            <ul>
+                <li><a href="/postagens/post-1/">Postagem 1</a></li>
+                <li><a href="/postagens/post-2/">Postagem 2</a></li>
+                <li><a href="/postagens/post-3/">Postagem 3</a></li>
+            </ul>
+        </LayoutBase>
+    </body>
 </html>
