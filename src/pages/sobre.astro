@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const tituloPagina = "Sobre Mim";
 
 const identidade = {
@@ -20,6 +21,10 @@ const habilidades = [
 const feliz = true;
 const terminado = false;
 const meta = 3;
+
+const corHabilidade = "navy";
+const espessuraFonte = 1000;
+const capitalizacaoTexto = "uppercase";
 ---
 
 <html lang="pt-BR">
@@ -27,6 +32,17 @@ const meta = 3;
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>{tituloPagina}</title>
+        <style define:vars={{corHabilidade, espessuraFonte, capitalizacaoTexto}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .habilidade {
+              color: var(--corHabilidade);
+              font-weight: var(--espessuraFonte);
+              text-transform: var(--capitalizacaoTexto);
+            }
+          </style>
     </head>
     <body>
         <a href="/">Início</a>
@@ -63,7 +79,11 @@ const meta = 3;
         </ul>
         <p>Minhas habilidades são:</p>
         <ul>
-            {habilidades.map((habilidade) => <li>{habilidade}</li>)}
+            {
+                habilidades.map((habilidade) => (
+                    <li class="habilidade">{habilidade}</li>
+                ))
+            }
         </ul>
 
         {feliz && <p>Estou feliz em estar aprendendo Astro!</p>}
